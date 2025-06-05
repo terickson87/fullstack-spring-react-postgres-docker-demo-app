@@ -4,7 +4,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
-group = "io.github.terickson87"
+group = "com.example"
 version = "0.0.1-SNAPSHOT"
 
 java {
@@ -18,15 +18,14 @@ repositories {
 }
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	
-	runtimeOnly("com.h2database:h2")
-
+	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.security:spring-security-test")
-	
+	testImplementation("org.springframework.boot:spring-boot-testcontainers")
+	testImplementation("org.testcontainers:junit-jupiter")
+	testImplementation("org.testcontainers:postgresql")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
